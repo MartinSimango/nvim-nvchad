@@ -271,13 +271,13 @@ M.lspconfig = {
       "Add workspace folder",
     },
 
-    ["<leader>wr"] = {
-      function()
-        vim.lsp.buf.remove_workspace_folder()
-      end,
-      "Remove workspace folder",
-    },
-
+    -- ["<leader>wr"] = {
+    --   function()
+    --     vim.lsp.buf.remove_workspace_folder()
+    --   end,
+    --   "Remove workspace folder",
+    -- },
+    --
     ["<leader>wL"] = {
       function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
@@ -342,7 +342,7 @@ M.nvterm = {
   plugin = true,
 
   t = {
-["<tab>"] = {
+    ["<tab>"] = {
       function ()
         
       end,
@@ -375,13 +375,13 @@ M.nvterm = {
   },
 
   n = {
-    -- toggle in normal mode
-    ["<tab>"] = {
-      function ()
+    -- -- toggle in normal mode
+    -- ["<tab>"] = {
+    --   function ()
         
-      end,
-      "Do nothing"
-    },
+    --   end,
+    --   "Do nothing"
+    -- },
 
     ["<C-i>"] = {
       function()
