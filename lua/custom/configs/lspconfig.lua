@@ -17,6 +17,8 @@ lspconfig.gopls.setup {
       analyses = {
         unusedparams = true,
       },
+      staticcheck = true,
+      gofumpt = true,
     },
   },
 }
@@ -45,3 +47,7 @@ lspconfig.rust_analyzer.setup({
     },
   },
 })
+
+
+
+

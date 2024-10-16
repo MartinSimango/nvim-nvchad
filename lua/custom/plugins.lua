@@ -6,6 +6,7 @@ local plugins = {
         "gopls",
         "cuelsp",
         "rust-analyzer",
+        "terraform-ls"
       },
     },
   },
@@ -143,6 +144,15 @@ local plugins = {
     init = function()
       vim.g.rustfmt_autosave = 1
     end
+  },
+ -- Add Terraform support
+  {
+    "hashicorp/terraform-ls",
+    dependencies = { "neovim/nvim-lspconfig" },
+    config = function()
+      require('lspconfig').terraformls.setup{}
+    end,
+    ft = {"terraform", "hcl","tf"},  -- Enable for Terraform files
   }
 }
 return plugins
