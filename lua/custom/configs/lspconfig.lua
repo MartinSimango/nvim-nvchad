@@ -38,7 +38,7 @@ lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   -- cmd = {"rust-analyzer"},
   filetypes = { "rust" },
-  root_dir = util.root_pattern("Cargo.toml"), 
+  root_dir = util.root_pattern("Cargo.toml"),
   settings = {
     ["rust-analyzer"] = {
       cargo = {
@@ -49,5 +49,9 @@ lspconfig.rust_analyzer.setup({
 })
 
 
-
+lspconfig.pyright.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "python" },
+})
 

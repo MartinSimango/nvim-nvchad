@@ -6,7 +6,11 @@ local plugins = {
         "gopls",
         "cuelsp",
         "rust-analyzer",
-        "terraform-ls"
+        "terraform-ls",
+        "tsserver",
+        "html-lsp",
+        "css-lsp",
+        "pyright",
       },
     },
   },
@@ -93,7 +97,14 @@ local plugins = {
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
-    end,
+      local lspconfig = require "lspconfig"
+      lspconfig.html.setup{}
+      lspconfig.cssls.setup{}
+      lspconfig.tsserver.setup{}
+    -- Add other language server setups here
+  end,
+  ft = { "html", "css", "scss", "less", "ts", "js", "tsx", "jsx" }, 
+
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -153,6 +164,8 @@ local plugins = {
       require('lspconfig').terraformls.setup{}
     end,
     ft = {"terraform", "hcl","tf"},  -- Enable for Terraform files
-  }
+  },
+
+
 }
 return plugins
