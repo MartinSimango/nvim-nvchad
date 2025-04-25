@@ -5,6 +5,9 @@ local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
 
 lspconfig.gopls.setup {
+  inlay_hints = {
+    enable = false
+  },
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {"gopls"},
@@ -17,8 +20,16 @@ lspconfig.gopls.setup {
       analyses = {
         unusedparams = true,
       },
-      staticcheck = true,
+      -- staticcheck = true,
       gofumpt = true,
+      -- hints = {
+      --   assignVariableTypes = true,
+      --   compositeLiteralFields = true,
+      --   constantValues = true,
+      --   functionTypeParameters = true,
+      --   parameterNames = true,
+      --   rangeVariableTypes = true,
+      -- }
     },
   },
 }
@@ -38,7 +49,7 @@ lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   -- cmd = {"rust-analyzer"},
   filetypes = { "rust" },
-  root_dir = util.root_pattern("Cargo.toml"),
+  -- root_dir = util.root_pattern("Cargo.toml"),
   settings = {
     ["rust-analyzer"] = {
       cargo = {
@@ -55,3 +66,12 @@ lspconfig.pyright.setup({
   filetypes = { "python" },
 })
 
+
+lspconfig.terraformls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {"terraform-ls", "serve"},
+  filetypes = { "terraform"},
+  root_dir = util.root_pattern("*.tf", ".git"),
+  -- single_file_support = true
+})

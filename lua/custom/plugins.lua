@@ -7,10 +7,10 @@ local plugins = {
         "cuelsp",
         "rust-analyzer",
         "terraform-ls",
-        "tsserver",
+        "ts_ls",
         "html-lsp",
         "css-lsp",
-        "pyright",
+        "pyright"
       },
     },
   },
@@ -100,15 +100,15 @@ local plugins = {
       local lspconfig = require "lspconfig"
       lspconfig.html.setup{}
       lspconfig.cssls.setup{}
-      lspconfig.tsserver.setup{}
+      lspconfig.ts_ls.setup{}
     -- Add other language server setups here
   end,
   ft = { "html", "css", "scss", "less", "ts", "js", "tsx", "jsx" }, 
 
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = "go",
+    "nvimtools/none-ls.nvim",
+    ft = {"go","terraform"},
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -155,17 +155,6 @@ local plugins = {
     init = function()
       vim.g.rustfmt_autosave = 1
     end
-  },
- -- Add Terraform support
-  {
-    "hashicorp/terraform-ls",
-    dependencies = { "neovim/nvim-lspconfig" },
-    config = function()
-      require('lspconfig').terraformls.setup{}
-    end,
-    ft = {"terraform", "hcl","tf"},  -- Enable for Terraform files
-  },
-
-
+  }
 }
 return plugins

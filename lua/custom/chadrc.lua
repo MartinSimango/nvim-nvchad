@@ -5,6 +5,12 @@ M.ui = { theme = 'ashes' }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
 
+vim.filetype.add({
+  extension = {
+    tf = "terraform",
+  }
+})
+
  -- visual mode highlight colour
 vim.cmd[[highlight Visual guibg=#2596be]] -- guifg=#ADD8E6]]
 
@@ -18,3 +24,4 @@ vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
 vim.g.copilot_no_tab_map = true
 return M
 -- Comment        xxx guifg=#4a4e51
+
